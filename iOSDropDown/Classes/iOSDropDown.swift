@@ -16,7 +16,7 @@ open class DropDown: UITextField {
 
     // MARK: IBInspectable
 
-    @IBInspectable public var rowHeight: CGFloat = 30
+    @IBInspectable public var rowHeight: CGFloat = 50
     @IBInspectable public var rowBackgroundColor: UIColor = .white
     @IBInspectable public var itemsColor: UIColor = .darkGray
     @IBInspectable public var itemsTintColor: UIColor = .blue
@@ -253,7 +253,8 @@ open class DropDown: UITextField {
         table.separatorStyle = .none
         table.layer.cornerRadius = 3
         table.backgroundColor = rowBackgroundColor
-        table.rowHeight = rowHeight
+        table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = rowHeight
         if (showScrollBarAlways) {
             self.startTimerForShowScrollIndicator()
         }
