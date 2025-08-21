@@ -204,7 +204,7 @@ open class DropDown : UITextField{
         parentController?.view.insertSubview(backgroundView, aboveSubview: self)
         TableWillAppearCompletion()
         if listHeight > rowHeight * CGFloat( dataArray.count) {
-            self.tableheightX = rowHeight * CGFloat(dataArray.count)
+            self.tableheightX = rowHeight * ( CGFloat(dataArray.count) + 1.5 )
         }else{
             self.tableheightX = listHeight
         }
