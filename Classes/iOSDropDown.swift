@@ -288,7 +288,7 @@ open class DropDown : UITextField{
     }
     func reSizeTable() {
         if listHeight > rowHeight * CGFloat( dataArray.count) {
-            self.tableheightX = rowHeight * CGFloat(dataArray.count)
+            self.tableheightX = rowHeight * ( CGFloat(dataArray.count) + 1.5 )
         }else{
             self.tableheightX = listHeight
         }
