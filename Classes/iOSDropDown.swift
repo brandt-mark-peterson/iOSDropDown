@@ -276,12 +276,19 @@ open class DropDown: UITextField {
             y = pointToParent.y + frame.height + 5
             tableheightX = min(tableheightX, spaceBelow)
             
-            // Inside showList(), in the // Show below case:
-            if let tabBarHeight = parentController?.tabBarController?.tabBar.frame.height {
-                let availableSpaceBelow = spaceBelow - tabBarHeight
-                tableheightX = max(tableheightX, availableSpaceBelow)
+            let totalContentHeight = rowHeight * CGFloat(dataArray.count) + 20
+
+            if totalContentHeight <= min(listHeight, spaceBelow) {
+                // All items fit, so use the content height
+                tableheightX = totalContentHeight
             } else {
-                tableheightX = min(tableheightX, spaceBelow)
+                // Not all items fit, so use the available space minus tab bar if present
+                if let tabBarHeight = parentController?.tabBarController?.tabBar.frame.height {
+                    let availableSpaceBelow = spaceBelow - tabBarHeight
+                    tableheightX = max(listHeight, availableSpaceBelow)
+                } else {
+                    tableheightX = min(listHeight, spaceBelow)
+                }
             }
             
         } else {
