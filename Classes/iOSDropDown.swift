@@ -516,7 +516,9 @@ extension DropDown: UITableViewDelegate {
                        },
                        completion: { (_) -> Void in
                         
-            self.text = self.selectedIndexes.map { self.dataArray[$0] }.joined(separator: ", ")
+                        if(self.selectedIndexes.count > 1) {
+                                self.text = self.selectedIndexes.map { self.dataArray[$0] }.joined(separator: ", ")
+                        }
 
                            tableView.reloadData()
                        })
